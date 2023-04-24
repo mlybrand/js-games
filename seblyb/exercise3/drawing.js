@@ -22,6 +22,16 @@ function draw_grid(ctx, minor, major, stroke, fill) {
         ctx.lineWidth = (y % major == 0) ? 0.5 : 0.25;
         ctx.stroke();
         if(y % major == 0) {ctx.fillText(y, 0, y + 10);}
+        
       }
+      
       ctx.restore();
     }
+ 
+function draw_pacman(context, x, y, r, mouth) {
+    context.beginPath();
+    context.arc(x, y, r, mouth * Math.PI, (2 -mouth) * Math.PI);
+    context.lineTo(x, y, r, mouth)
+    context.fillStyle = "yellow";
+    context.fill();
+}
