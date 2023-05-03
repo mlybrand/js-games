@@ -1,18 +1,33 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>Drawing a spaceship</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="drawing.js"></script>
+  <title>Drawing a spaceship</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="drawing.js"></script>
 </head>
+
 <body>
   <h1>Drawing a spaceship</h1>
   <canvas id="asteroids" width="400" height="400"></canvas>
   <script>
     var context = document.getElementById("asteroids").
-    getContext("2d");
+      getContext("2d");
+    context.lineWidth = 0.5;
+    context.strokeStle = "white";
+    let x = context.canvas.width * 0.9;
+    let y = 0;
+    let radius = context.canvas.width * 0.1;
     draw_grid(context);
-    draw_ship(context, 200, 200, 150, {guide: true});
+    let t = context.canvas.width / 20;
+    let r = Math.PI / 500;
+    context.translate(0, t);
+    for (let i = 0; i <= 50; i++) {
+      context.rotate(i * r);
+      draw_ship(context, t, { guide: true, lineWidth: 1 });
+      context.translate(t, 0);
+    }
   </script>
-  </body>
+</body>
+
 </html>
